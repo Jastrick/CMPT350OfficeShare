@@ -282,8 +282,6 @@ namespace SurfaceApplication1
             webBrower.ShowCreatedWebView += new ShowCreatedWebViewEventHandler(webBrower_ShowCreatedWebView);
 
             ScatterViewItem newItem = new ScatterViewItem();
-            newItem.Height = 400;
-            newItem.Width = 400;
             //newItem.Margin = new Thickness(25.0, 25.0, 25.0, 25.0);
             newItem.Padding = new Thickness(25.0, 25.0, 25.0, 25.0);
             //newItem.Content = webBrower;
@@ -331,8 +329,6 @@ namespace SurfaceApplication1
             webBrower.Source = new Uri("http://www.google.com");
             webBrower.ShowCreatedWebView += new ShowCreatedWebViewEventHandler(webBrower_ShowCreatedWebView);
 
-            addition.Height = 400;
-            addition.Width = 400;
             //newItem.Margin = new Thickness(25.0, 25.0, 25.0, 25.0);
             svi.Padding = new Thickness(25.0, 25.0, 25.0, 25.0);
             //newItem.Content = webBrower;
