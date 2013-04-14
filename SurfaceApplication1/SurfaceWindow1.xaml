@@ -1,0 +1,40 @@
+﻿<s:SurfaceWindow x:Class="SurfaceApplication1.SurfaceWindow1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+    Title="SurfaceApplication1" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignHeight="354" d:DesignWidth="358" SizeToContent="WidthAndHeight">
+  <Grid ShowGridLines="True">
+
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <s:ScatterView Grid.Row="1" Grid.Column="1" x:Name="SVR">
+        </s:ScatterView>
+
+        <s:ScatterView Grid.Row="1" Grid.Column="0" x:Name="SVL">
+        </s:ScatterView>
+
+        <s:ElementMenu VerticalAlignment="Bottom" ActivationMode="AlwaysActive" Margin="0,0,68,0" Height="100">
+            <s:ElementMenuItem Name="LeftClicker" Header="Open File" Click="ElementMenuLeft_click">
+            </s:ElementMenuItem>
+            <s:ElementMenuItem Header="Close All" Click="ElementCloseAllMenuItemsLeft_Click"></s:ElementMenuItem>
+            <s:ElementMenuItem Header="Open Browser" Click="ElementBrowserLeft_Click"></s:ElementMenuItem>
+        </s:ElementMenu>
+
+
+        <Border Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Panel.ZIndex="1">
+            <s:ElementMenu Name="RightClicker" VerticalAlignment="Bottom" ActivationMode="AlwaysActive" Margin="0,0,68,0" Height="100">
+                <s:ElementMenuItem Header="Open File" Click="ElementMenuRight_click">
+                </s:ElementMenuItem>
+                <s:ElementMenuItem Header="Close All" Click="ElementCloseAllMenuItemsRight_Click"></s:ElementMenuItem>
+                <s:ElementMenuItem Header="Open Browser" Click="ElementBrowserRight_Click"></s:ElementMenuItem>
+            </s:ElementMenu>
+        </Border>
+    </Grid>
+</s:SurfaceWindow>
