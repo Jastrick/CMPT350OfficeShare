@@ -274,23 +274,42 @@ namespace SurfaceApplication1
         //Browser Code
         private void BuildBrowserInScatterView(string s, ScatterView scatterview)
         {
+            ScatterViewItem svi = new ScatterViewItem();
+            Grid addition = new Grid();
+
             CustomBrowser webBrower = new CustomBrowser();
-            webBrower.scatter = scatterview;
+            webBrower.scatter = SVL;
             webBrower.Width = double.NaN; //set it for auto width
             webBrower.Height = double.NaN;
             webBrower.Source = new Uri(s);
             webBrower.ShowCreatedWebView += new ShowCreatedWebViewEventHandler(webBrower_ShowCreatedWebView);
 
-            ScatterViewItem newItem = new ScatterViewItem();
             //newItem.Margin = new Thickness(25.0, 25.0, 25.0, 25.0);
-            newItem.Padding = new Thickness(25.0, 25.0, 25.0, 25.0);
+            svi.Padding = new Thickness(25.0, 25.0, 25.0, 25.0);
             //newItem.Content = webBrower;
             WrapPanel wrap = new WrapPanel();
             wrap.Orientation = System.Windows.Controls.Orientation.Vertical;
             //wrap.Children.Add(new SurfaceTextBox());
             wrap.Children.Add(webBrower);
-            newItem.Content = wrap;
-            //scatterview.Items.Add(newItem);
+
+            addition.Children.Add(wrap);
+            svi.Content = addition; //Sets the new grid as the SVI content
+
+            //ElementMenuItem check = (ElementMenuItem)sender;
+
+            scatterview.Items.Add(svi);
+
+            ElementMenu menu = new ElementMenu();
+            menu.ActivationHost = svi;
+            menu.ActivationMode = ElementMenuActivationMode.HostInteraction;
+            ElementMenuItem emi = new ElementMenuItem();
+            emi.Header = "Close";
+            emi.Click += new RoutedEventHandler(ElementCloseMenuItem_Click);
+            menu.Items.Add(emi);
+
+            menu.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+            menu.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            addition.Children.Add(menu); //adds ElementMenu to the grid
         }
 
         private void ElementCloseAllMenuItemsRight_Click(object sender, RoutedEventArgs e)
@@ -369,19 +388,15 @@ namespace SurfaceApplication1
             webBrower.Source = new Uri("http://www.google.com");
             webBrower.ShowCreatedWebView += new ShowCreatedWebViewEventHandler(webBrower_ShowCreatedWebView);
 
-            ScatterViewItem newItem = new ScatterViewItem();
-            newItem.Height = 400;
-            newItem.Width = 400;
             //newItem.Margin = new Thickness(25.0, 25.0, 25.0, 25.0);
-            newItem.Padding = new Thickness(25.0, 25.0, 25.0, 25.0);
+            svi.Padding = new Thickness(25.0, 25.0, 25.0, 25.0);
             //newItem.Content = webBrower;
             WrapPanel wrap = new WrapPanel();
             wrap.Orientation = System.Windows.Controls.Orientation.Vertical;
             //wrap.Children.Add(new SurfaceTextBox());
             wrap.Children.Add(webBrower);
-            newItem.Content = wrap;
-            addition.Children.Add(newItem);
 
+            addition.Children.Add(wrap);
             svi.Content = addition; //Sets the new grid as the SVI content
 
             ElementMenuItem check = (ElementMenuItem)sender;
@@ -391,7 +406,6 @@ namespace SurfaceApplication1
             ElementMenu menu = new ElementMenu();
             menu.ActivationHost = svi;
             menu.ActivationMode = ElementMenuActivationMode.HostInteraction;
-
             ElementMenuItem emi = new ElementMenuItem();
             emi.Header = "Close";
             emi.Click += new RoutedEventHandler(ElementCloseMenuItem_Click);
