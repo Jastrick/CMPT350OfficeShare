@@ -278,7 +278,7 @@ namespace SurfaceApplication1
             Grid addition = new Grid();
 
             CustomBrowser webBrower = new CustomBrowser();
-            webBrower.scatter = SVL;
+            webBrower.scatter = scatterview;
             webBrower.Width = double.NaN; //set it for auto width
             webBrower.Height = double.NaN;
             webBrower.Source = new Uri(s);
@@ -338,82 +338,11 @@ namespace SurfaceApplication1
 
         private void ElementBrowserLeft_Click(object sender, RoutedEventArgs e)
         {
-            ScatterViewItem svi = new ScatterViewItem();
-            Grid addition = new Grid();
-
-            CustomBrowser webBrower = new CustomBrowser();
-            webBrower.scatter = SVL;
-            webBrower.Width = double.NaN; //set it for auto width
-            webBrower.Height = double.NaN;
-            webBrower.Source = new Uri("http://www.google.com");
-            webBrower.ShowCreatedWebView += new ShowCreatedWebViewEventHandler(webBrower_ShowCreatedWebView);
-
-            //newItem.Margin = new Thickness(25.0, 25.0, 25.0, 25.0);
-            svi.Padding = new Thickness(25.0, 25.0, 25.0, 25.0);
-            //newItem.Content = webBrower;
-            WrapPanel wrap = new WrapPanel();
-            wrap.Orientation = System.Windows.Controls.Orientation.Vertical;
-            //wrap.Children.Add(new SurfaceTextBox());
-            wrap.Children.Add(webBrower);
-         
-            addition.Children.Add(wrap);
-            svi.Content = addition; //Sets the new grid as the SVI content
-
-            ElementMenuItem check = (ElementMenuItem)sender;
-
-            SVL.Items.Add(svi);
-
-            ElementMenu menu = new ElementMenu();
-            menu.ActivationHost = svi;
-            menu.ActivationMode = ElementMenuActivationMode.HostInteraction;
-            ElementMenuItem emi = new ElementMenuItem();
-            emi.Header = "Close";
-            emi.Click += new RoutedEventHandler(ElementCloseMenuItem_Click);
-            menu.Items.Add(emi);
-
-            menu.VerticalAlignment = System.Windows.VerticalAlignment.Top;
-            menu.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
-            addition.Children.Add(menu); //adds ElementMenu to the grid
-
+            BuildBrowserInScatterView("http://www.google.com", SVL);
         }
         private void ElementBrowserRight_Click(object sender, RoutedEventArgs e)
         {
-            ScatterViewItem svi = new ScatterViewItem();
-            Grid addition = new Grid();
-
-            CustomBrowser webBrower = new CustomBrowser();
-            webBrower.scatter = SVR;
-            webBrower.Width = double.NaN; //set it for auto width
-            webBrower.Height = double.NaN;
-            webBrower.Source = new Uri("http://www.google.com");
-            webBrower.ShowCreatedWebView += new ShowCreatedWebViewEventHandler(webBrower_ShowCreatedWebView);
-
-            //newItem.Margin = new Thickness(25.0, 25.0, 25.0, 25.0);
-            svi.Padding = new Thickness(25.0, 25.0, 25.0, 25.0);
-            //newItem.Content = webBrower;
-            WrapPanel wrap = new WrapPanel();
-            wrap.Orientation = System.Windows.Controls.Orientation.Vertical;
-            //wrap.Children.Add(new SurfaceTextBox());
-            wrap.Children.Add(webBrower);
-
-            addition.Children.Add(wrap);
-            svi.Content = addition; //Sets the new grid as the SVI content
-
-            ElementMenuItem check = (ElementMenuItem)sender;
-
-            SVR.Items.Add(svi);
-
-            ElementMenu menu = new ElementMenu();
-            menu.ActivationHost = svi;
-            menu.ActivationMode = ElementMenuActivationMode.HostInteraction;
-            ElementMenuItem emi = new ElementMenuItem();
-            emi.Header = "Close";
-            emi.Click += new RoutedEventHandler(ElementCloseMenuItem_Click);
-            menu.Items.Add(emi);
-
-            menu.VerticalAlignment = System.Windows.VerticalAlignment.Top;
-            menu.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
-            addition.Children.Add(menu); //adds ElementMenu to the grid
+            BuildBrowserInScatterView("http://www.google.com", SVR);
         }
     }
 }
