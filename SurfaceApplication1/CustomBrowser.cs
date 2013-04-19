@@ -9,6 +9,6 @@ namespace SurfaceApplication1
 {
     class CustomBrowser : WebControl
     {
-        public ScatterViewItem scatter;
+        public ScatterView scatter;
     }
 }

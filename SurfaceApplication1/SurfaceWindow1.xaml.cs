@@ -272,7 +272,7 @@ namespace SurfaceApplication1
         }
 
         //Browser Code
-        private void BuildBrowserInScatterView(string s, ScatterViewItem scatterview)
+        private void BuildBrowserInScatterView(string s, ScatterView scatterview)
         {
             CustomBrowser webBrower = new CustomBrowser();
             webBrower.scatter = scatterview;
@@ -323,7 +323,7 @@ namespace SurfaceApplication1
             Grid addition = new Grid();
 
             CustomBrowser webBrower = new CustomBrowser();
-            webBrower.scatter = svi;
+            webBrower.scatter = SVL;
             webBrower.Width = double.NaN; //set it for auto width
             webBrower.Height = double.NaN;
             webBrower.Source = new Uri("http://www.google.com");
@@ -363,7 +363,7 @@ namespace SurfaceApplication1
             Grid addition = new Grid();
 
             CustomBrowser webBrower = new CustomBrowser();
-            webBrower.scatter = svi;
+            webBrower.scatter = SVR;
             webBrower.Width = double.NaN; //set it for auto width
             webBrower.Height = double.NaN;
             webBrower.Source = new Uri("http://www.google.com");
